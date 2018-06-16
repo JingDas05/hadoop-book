@@ -10,6 +10,9 @@ import org.apache.hadoop.io.IOUtils;
 // vv FileSystemDoubleCat
 public class FileSystemDoubleCat {
 
+
+  // export HADOOP_CLASSPATH=/home/wusi/soft/hadoop/test/ch3/ch03-hdfs-4.0.jar
+  // hadoop FileSystemDoubleCat hdfs://192.168.1.3:9000/home/wusi/simple2.txt
   public static void main(String[] args) throws Exception {
     String uri = args[0];
     Configuration conf = new Configuration();
@@ -18,6 +21,7 @@ public class FileSystemDoubleCat {
     try {
       in = fs.open(new Path(uri));
       IOUtils.copyBytes(in, System.out, 4096, false);
+      // 重新设置初始位置
       in.seek(0); // go back to the start of the file
       IOUtils.copyBytes(in, System.out, 4096, false);
     } finally {

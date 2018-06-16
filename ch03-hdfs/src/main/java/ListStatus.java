@@ -10,6 +10,10 @@ import org.apache.hadoop.fs.Path;
 // vv ListStatus
 public class ListStatus {
 
+
+  // export HADOOP_CLASSPATH=/home/wusi/soft/hadoop/test/ch3/ch03-hdfs-4.0.jar
+  // hadoop ListStatus hdfs://192.168.1.3:9000/ hdfs://192.168.1.3:9000/home/wusi
+
   public static void main(String[] args) throws Exception {
     String uri = args[0];
     Configuration conf = new Configuration();

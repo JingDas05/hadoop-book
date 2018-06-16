@@ -16,6 +16,7 @@ public class ShowFileStatusTest {
   private MiniDFSCluster cluster; // use an in-process HDFS cluster for testing
   private FileSystem fs;
 
+  // 首先创建文件
   @Before
   public void setUp() throws IOException {
     Configuration conf = new Configuration();
@@ -50,6 +51,7 @@ public class ShowFileStatusTest {
     assertThat(stat.getModificationTime(),
         is(lessThanOrEqualTo(System.currentTimeMillis())));
     assertThat(stat.getReplication(), is((short) 1));
+    // 128MB
     assertThat(stat.getBlockSize(), is(128 * 1024 * 1024L));
     assertThat(stat.getOwner(), is(System.getProperty("user.name")));
     assertThat(stat.getGroup(), is("supergroup"));

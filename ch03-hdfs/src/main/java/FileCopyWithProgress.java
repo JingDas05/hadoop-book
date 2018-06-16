@@ -21,6 +21,7 @@ public class FileCopyWithProgress {
     
     Configuration conf = new Configuration();
     FileSystem fs = FileSystem.get(URI.create(dst), conf);
+    // Progressable 进度指示
     OutputStream out = fs.create(new Path(dst), new Progressable() {
       public void progress() {
         System.out.print(".");
